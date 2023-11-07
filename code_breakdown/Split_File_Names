@@ -14,8 +14,15 @@ Dim CFRNum4 As Integer
 Dim CFRDesc1 As String
 Dim CFRDesc2 As String
 
-FileName1 = "123456 xx12 CFR001 Propeller Repair.pdf"
-FileName2 = "123456 xx12 CFR001 Propeller Repair"
-FileName3 = "123456 xx12 CFR001 Propeller Repair"
+'Remove extension and spaces so file name is easier to work with
+FileName1 = "123456 PKX12 CFR001 Propeller Repair.pdf"
+FileName2 = "123456 PKX12 CFR001 Propeller Repair"
+FileName3 = Replace(FileName2, " ", "")
+
+'Split file name into usable information
+JobNum = Split(FileName3, "PKX")(0)
+Vessel = Split((Split(FileNaame3, JobNum)(1)), "CFR")(0)
+CFRNum1 = Split(FileName3, Vessel)(1)
+CFRNum2 = Left(CFRNum1, 6)
 
 End Sub
