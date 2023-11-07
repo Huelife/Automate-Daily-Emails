@@ -1,0 +1,13 @@
+Sub Get_File_Names()
+
+'Declare variables
+Dim FilePath As String
+Dim FileName1 As String
+Dim FileName2 As String
+Dim FileName3 As String
+
+Dim oFSO As Object
+Dim oFolder As Object
+Dim oFile As Object
+
+End Sub
