@@ -25,4 +25,11 @@ Vessel = Split((Split(FileNaame3, JobNum)(1)), "CFR")(0)
 CFRNum1 = Split(FileName3, Vessel)(1)
 CFRNum2 = Left(CFRNum1, 6)
 
+CFRNum3 = Right(CFRNum2, 3)
+CFRNum4 = InStr(FileName2, "CFR")
+CFRDesc1 = Mid(FileName2, CFRNum4)
+CFRDesc2 = Trim(Split(CFRDesc1, CFRNum3)(1))
+
+MsgBox ("Job#: " & JobNum & " Vessel: " & Vessel & " " & CFRNum2 & " Description: " & CFRDesc2)
+
 End Sub
