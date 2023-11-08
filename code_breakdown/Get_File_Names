@@ -10,4 +10,16 @@ Dim oFSO As Object
 Dim oFolder As Object
 Dim oFile As Object
 
+FilePath = ""
+Set oFSO = CreatObject("Scripting.FileSystemObject")
+Set oFolder = oFSO.GetFolder(FilePath)
+For Each oFile in oFolder.Files
+FileName1 = oFile.Name
+Next
+
+FileName2 = oFSO.GetBaseName(FileName1)
+FileName3 = Replace(FileName2, " ", "")
+
+MsgBox (FileName2 & " " & FileName3)
+
 End Sub
