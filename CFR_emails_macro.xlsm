@@ -5,6 +5,8 @@ Dim FilePath As String
 Dim FileName1 As String
 Dim FileName2 As String
 Dim FileName3 As String
+
+'Declare variables
 Dim JobNum As String
 Dim Vessel As String
 Dim VesselNum As String
@@ -15,10 +17,12 @@ Dim CFRNum4 As Integer
 Dim CFRDesc1 As String
 Dim CFRDesc2 As String
 
+'Declare variables
 Dim oFSO As Object
 Dim oFolder As Object
 Dim oFile As Object
 
+'Get file name
 FilePath = ""
 Set oFSO = CreatObject("Scripting.FileSystemObject")
 Set oFolder = oFSO.GetFolder(FilePath)
@@ -36,6 +40,7 @@ Vessel = Split((Split(FileNaame3, JobNum)(1)), "CFR")(0)
 CFRNum1 = Split(FileName3, Vessel)(1)
 CFRNum2 = Left(CFRNum1, 6)
 
+'Split file name into usable information
 CFRNum3 = Right(CFRNum2, 3)
 CFRNum4 = InStr(FileName2, "CFR")
 CFRDesc1 = Mid(FileName2, CFRNum4)
