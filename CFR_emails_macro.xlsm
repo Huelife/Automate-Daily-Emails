@@ -1,3 +1,44 @@
-Sub CFR_emails_macro()
+Sub CFR_emails()
+
+'Declare variables
+Dim FilePath As String
+Dim FileName1 As String
+Dim FileName2 As String
+Dim FileName3 As String
+Dim JobNum As String
+Dim Vessel As String
+Dim VesselNum As String
+Dim CFRNum1 As String
+Dim CFRNum2 As String
+Dim CFRNum3 As String
+Dim CFRNum4 As Integer
+Dim CFRDesc1 As String
+Dim CFRDesc2 As String
+
+Dim oFSO As Object
+Dim oFolder As Object
+Dim oFile As Object
+
+FilePath = ""
+Set oFSO = CreatObject("Scripting.FileSystemObject")
+Set oFolder = oFSO.GetFolder(FilePath)
+For Each oFile in oFolder.Files
+FileName1 = oFile.Name
+Next
+
+'Remove extension and spaces so file name is easier to work with
+FileName2 = oFSO.GetBaseName(FileName1)
+FileName3 = Replace(FileName2, " ", "")
+
+'Split file name into usable information
+JobNum = Split(FileName3, "PKX")(0)
+Vessel = Split((Split(FileNaame3, JobNum)(1)), "CFR")(0)
+CFRNum1 = Split(FileName3, Vessel)(1)
+CFRNum2 = Left(CFRNum1, 6)
+
+CFRNum3 = Right(CFRNum2, 3)
+CFRNum4 = InStr(FileName2, "CFR")
+CFRDesc1 = Mid(FileName2, CFRNum4)
+CFRDesc2 = Trim(Split(CFRDesc1, CFRNum3)(1))
 
 End Sub
