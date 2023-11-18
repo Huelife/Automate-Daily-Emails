@@ -23,6 +23,14 @@ Dim oFSO As Object
 Dim oFolder As Object
 Dim oFile As Object
 
+'Declare variables
+Dim EmailSubject As String
+Dim CustomerName As String
+Dim Email_To As String, Email_CC As String, Email_Body As String
+
+Dim DisplayEmail As Boolean
+Dim OutlookApp As Object, OutlookMail As Object
+
 'Get file name
 FilePath = ""
 Set oFSO = CreatObject("Scripting.FileSystemObject")
@@ -46,5 +54,37 @@ CFRNum3 = Right(CFRNum2, 3)
 CFRNum4 = InStr(FileName2, "CFR")
 CFRDesc1 = Mid(FileName2, CFRNum4)
 CFRDesc2 = Trim(Split(CFRDesc1, CFRNum3)(1))
+
+'Create Outlook obj
+Set OutlookApp = CreatObject("Outlook.Application")
+Set OutlookMail = OutlookApp.CreateItem(0)
+
+'Create email information
+EmailSubject = "xxx " & VesselNum & " " & CFRNum2
+DisplayEmail = True
+
+If VesselNum = "xx12" Or VesselNum = "xx13" Or VesselNum = "xx14" Then
+Email_To = "Customer.No.1@gmail.com"
+CustomerName = "CustomerName #1"
+End If
+
+If VesselNum = "xx15" Or VesselNum = "xx16" Or VesselNum = "xx17" Then
+Email_To = "Customer.No.2@gmail.com"
+CustomerName = "CustomerName #2"
+End If
+
+Email_CC = "manager.email@gmail.com;" & "project.manager.email@gmail.com;"
+Email_Body = "<Body style=font-size:11pt;font-family:Calibri>" & "Good Morning " & CustomerName & "," & <br><br>" & "Please see attached for " & CFRDesc2 & "." & "</Body>"
+
+'Display email
+With OutlookMail
+.Display
+.To = Email_To
+.CC = Email_CC
+.Subject = EmailSubject
+.HTMLBody = Email_Body
+.Attachments.Add FilePath & FileName2 & ".pdf"
+
+End With
 
 End Sub
