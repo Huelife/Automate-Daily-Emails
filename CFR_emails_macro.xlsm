@@ -16,6 +16,7 @@ Dim CFRNum3 As String
 Dim CFRNum4 As Integer
 Dim CFRDesc1 As String
 Dim CFRDesc2 As String
+Dim CustomerName As String
 
 'Declare variables
 Dim oFSO As Object
@@ -36,7 +37,7 @@ FileName3 = Replace(FileName2, " ", "")
 
 'Split file name into usable information
 JobNum = Split(FileName3, "PKX")(0)
-Vessel = Split((Split(FileNaame3, JobNum)(1)), "CFR")(0)
+Vessel = Split((Split(FileName3, JobNum)(1)), "CFR")(0)
 CFRNum1 = Split(FileName3, Vessel)(1)
 CFRNum2 = Left(CFRNum1, 6)
 
